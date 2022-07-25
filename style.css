@@ -14,3 +14,19 @@
     border: 1px whitesmoke;
     font-size: large;
 }
+
+body {
+    font-family: Open Sans;
+}
+
+.page {
+    display: flex;
+    flex-direction: row;
+}
+
+.right-side {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+  

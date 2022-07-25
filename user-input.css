@@ -1,0 +1,37 @@
+
+.user-form--section {
+  display: flex;
+  flex-direction: column;
+  background-color: #A9AAD2;
+  align-items: center;
+  padding: 20px;
+}
+
+.user-form--inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-form--button {
+  background-color: #1F1F3D;
+  color: white;
+}
+
+.search-icon {
+  width: 20px;
+  height: 20px;
+  background-color: #1F1F3D;
+  display: flex;
+  /* flex-grow: 1; */
+}
+
+.user-form--searchbar {
+  display: flex;
+  flex-grow: 4;
+}
+
+.user-form--searchbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
