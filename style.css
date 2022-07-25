@@ -1,0 +1,16 @@
+.navbar {
+    width: 200px;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    /* border: 2px solid blue; */
+    background-color: #1f1f3d;
+    color: white;
+}
+
+.filter-starred {
+    border: 1px whitesmoke;
+    font-size: large;
+}
