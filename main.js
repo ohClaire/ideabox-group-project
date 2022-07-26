@@ -15,12 +15,6 @@ let listOfBoxes = [];
 saveButton.addEventListener('click', saveUserInfo);
 ideaCardsArea.addEventListener('click', targetElement);
 
-// the parent element is ideaCardsArea
-// the children elements are the ideaCard
-// we need a function that will add an ideaCard to the parent
-// the ideaCard is the instance of Idea that's in the array
-// the function needs to iterate thru the Array and create a copy of each instance into a box
-
 function createIdeaCard() {
   for (let i = 0; i < listOfBoxes.length; i++) {
     ideaCardsArea.innerHTML += `<div class="idea-card">
@@ -38,8 +32,6 @@ function createIdeaCard() {
   </div>`;
   }
 }
-
-
 
 function saveUserInfo(event) {
   event.preventDefault();
