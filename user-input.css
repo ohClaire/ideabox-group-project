@@ -9,7 +9,7 @@
 
 .user-form--section label {
   font-size: 12px;
-  font-family: Open Sans, sans-serif
+  font-family: Open Sans
 }
 
 .user-form--inputs {
@@ -26,6 +26,7 @@
 .user-form--button {
   border-radius: 2px;
   font-size: 12px;
+  background-color: #1F1F3D;
   color: white;
 }
 
@@ -39,6 +40,8 @@
   background-color: #1F1F3D;
   width: 20px;
   height: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .search-icon {
@@ -53,6 +56,9 @@
 .user-form--searchbar {
   display: flex;
   flex-grow: 4;
+  font-size: 12px;
+  width: 180px;
+  height: 15px;
 }
 
 
@@ -60,10 +66,6 @@
 
 
 
-.idea-cards--area {
-  display: flex;
-  flex-wrap: wrap;
-}
 
 
 .idea-card {
