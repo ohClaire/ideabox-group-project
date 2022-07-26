@@ -1,4 +1,3 @@
-
 .user-form--section {
   display: flex;
   flex-direction: column;
@@ -34,4 +33,62 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+
+
+
+
+
+
+.idea-cards--area {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+.idea-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  margin: 10px;
+  padding: 5px;
+  width: 150px;
+}
+
+.card-header {
+  background-color: #1F1F3D;
+  margin: -5px;
+}
+
+.star-active-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.delete-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 115px;
+}
+
+.card-body {
+  height: 150px;
+}
+
+
+.card-comments {
+  background-color: #5356a4;
+  margin: -5px;
+  height: 20px;
+  display: flex;
+  justify-content: start;
+  color: #e9e9f3;
+}
+
+.plus-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: flex-start;
 }
