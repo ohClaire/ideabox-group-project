@@ -6,6 +6,7 @@ const saveButton = document.querySelector('.user-form--button');
 const ideaCardsArea = document.querySelector('.idea-cards--area');
 const ideaCard = document.querySelector('.idea-card');
 const ideaCardX = document.querySelector('.delete-icon');
+const starIcon = document.querySelector('.star-icon');
 
 //global variables
 const listOfBoxes = [];
@@ -16,7 +17,7 @@ window.addEventListener('load', createExampleIdeaCard);
 titleInput.addEventListener('input', handleChange);
 bodyInput.addEventListener('input', handleChange);
 saveButton.addEventListener('load', disableButton);
-ideaCardsArea.addEventListener('click', deleteCard)
+ideaCardsArea.addEventListener('click', chooseIcon);
 
 function createExampleIdeaCard() {
   var exampleCard = new Idea('Example Idea', 'I think big thoughts!')
@@ -30,7 +31,7 @@ function renderIdeaCard() {
     ideaCardsArea.innerHTML += `
     <div class="idea-card">
     <div class="card-header">
-      <img class="star-active-icon" src="./assets/star-active.svg" alt="star-active-icon">
+      <img id="${listOfBoxes[i].id}" class="star-icon" src="./assets/star.svg" alt="star-icon">
       <img id="${listOfBoxes[i].id}" class="delete-icon" src="./assets/delete.svg" alt="delete-icon">
     </div>
     <div class="card-body">
@@ -59,20 +60,9 @@ function saveUserInfo(event) {
   disableButton();
 }
 
-// if X is clicked, this.element.remove()
-function deleteCard(event) {
-  for (let i = 0; i < listOfBoxes.length; i++) {
-    if (event.target.id == listOfBoxes[i].id) {
-      listOfBoxes.splice(i, 1);
 
-      renderIdeaCard();
-    }
-  }
-}
-
-function disableButton(event) {
+function disableButton() {
   saveButton.disabled = true;
-  console.log(event)
 }
 
 function enableButton() {
@@ -84,5 +74,39 @@ function handleChange() {
     enableButton();
   } else {
     disableButton();
+  }
+}
+
+function deleteCard(event) {
+  for (let i = 0; i < listOfBoxes.length; i++) {
+    console.log('delete', event.target)
+    if (event.target.id == listOfBoxes[i].id) {
+      listOfBoxes.splice(i, 1);
+
+      renderIdeaCard();
+    }
+  }
+}
+
+function toggleStar(event) {
+  for (let i = 0; i < listOfBoxes.length; i++) {
+    console.log('star', event.target)
+    if (event.target.id == listOfBoxes[i].id) {
+      listOfBoxes[i].star = true;
+      console.log(listOfBoxes)
+    }
+  }
+}
+
+function chooseIcon(event) {
+  console.log(event.target)
+  console.log(ideaCardX)
+  if (event.target === ideaCardX) {
+    // deleteCard(event.target);
+    console.log('delete')
+  } 
+  if (event.target === starIcon) {
+    // toggleStar(event.target);
+    console.log('toggle')
   }
 }
