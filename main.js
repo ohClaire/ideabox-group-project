@@ -16,14 +16,15 @@ window.addEventListener('load', createExampleIdeaCard);
 titleInput.addEventListener('input', handleChange);
 bodyInput.addEventListener('input', handleChange);
 saveButton.addEventListener('load', disableButton);
+ideaCardsArea.addEventListener('click', deleteCard)
 
 function createExampleIdeaCard() {
   var exampleCard = new Idea('Example Idea', 'I think big thoughts!')
   listOfBoxes.unshift(exampleCard)
-  createIdeaCard();
+  renderIdeaCard();
 }
 
-function createIdeaCard() {
+function renderIdeaCard() {
   ideaCardsArea.innerHTML = "";
   for (let i = 0; i < listOfBoxes.length; i++) {
     ideaCardsArea.innerHTML += `
@@ -52,26 +53,22 @@ function saveUserInfo(event) {
 
   if (titleInput.value && bodyInput.value) {
     listOfBoxes.unshift(ideaBox);
-    createIdeaCard();
+    renderIdeaCard();
     document.forms[0].reset();
   }
   disableButton();
 }
 
-
-ideaCardsArea.addEventListener('click', deleteCard)
 // if X is clicked, this.element.remove()
 function deleteCard(event) {
-  // for (let i = 0; i < listOfBoxes.length; i++) {
-  //     if (event.target === ideaCardX) {
-  //       listOfBoxes
-  //       ideaCardsArea.removeChild(ideaCard)
-  // this.ideaCard.remove();
-  console.log('test', event.target);
-}
-// }
+  for (let i = 0; i < listOfBoxes.length; i++) {
+    if (event.target.id == listOfBoxes[i].id) {
+      listOfBoxes.splice(i, 1);
 
-// }
+      renderIdeaCard();
+    }
+  }
+}
 
 function disableButton(event) {
   saveButton.disabled = true;
