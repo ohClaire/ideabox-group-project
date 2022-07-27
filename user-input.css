@@ -28,6 +28,12 @@
   font-size: 12px;
 }
 
+.user-form--button:disabled {
+  background-color: #575761;
+  border: 2px solid #575761;
+  cursor: not-allowed;
+}
+
 .user-form--button {
   font-size: 10px;
   background-color: #1F1F3D;
