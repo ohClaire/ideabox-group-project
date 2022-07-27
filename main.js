@@ -5,13 +5,13 @@ bodyInput = document.querySelector('#body-box');
 saveButton = document.querySelector('.user-form--button');
 ideaCardsArea = document.querySelector('.idea-cards--area');
 ideaCard = document.querySelector('.idea-card');
+ideaCardX = document.querySelectorAll('.delete-icon');
 
 //global variables
 let listOfBoxes = [];
 
 //event listeners below
 saveButton.addEventListener('click', saveUserInfo);
-ideaCardsArea.addEventListener('click', targetElement);
 
 function createIdeaCard() {
     ideaCardsArea.innerHTML += `<div class="idea-card">
@@ -47,7 +47,14 @@ function clearInputBoxes() {
   bodyInput.value = "";
 }
 
-function targetElement(event) {
-  event.target
+ideaCardsArea.addEventListener('click', deleteCard)
+// if X is clicked, this.element.remove()
+function deleteCard(event) {
+  for (let i = 0; i < ideaCardX.length; i++) {
+      if (event.target === ideaCardX[i]) {
+      this.ideaCard.remove();
+      console.log('test', ideaCardX[i]);
+    }
+  }
+  
 }
-
