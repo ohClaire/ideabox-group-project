@@ -43,9 +43,7 @@ function renderIdeaCard() {
     </div>
   </div>`;
   }
-
 }
-
 
 function saveUserInfo(event) {
   event.preventDefault();
