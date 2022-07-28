@@ -61,4 +61,7 @@ hr.divider {
     flex-direction: column;
     flex-grow: 1;
 }
-  
+
+.hidden {
+    display: none;
+}
