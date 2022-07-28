@@ -23,6 +23,11 @@
   flex-direction: column;
 }
 
+.input-box {
+  border: 1px solid #5356a4;
+
+}
+
 #body-box {
   height: 60px;
   font-size: 12px;
