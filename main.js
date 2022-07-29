@@ -88,6 +88,9 @@ function deleteCard(ideaCardID) {
 }
 
 function toggleFavorite(ideaCardID) {
+  const starIcon = document.querySelector('.star-icon');
+  const starActiveIcon = document.querySelector('.star-active-icon')
+
   for (let i = 0; i < listOfCards.length; i++) {
     if (ideaCardID == listOfCards[i].id) {
       listOfCards[i].star = !listOfCards[i].star;
@@ -118,11 +121,13 @@ function toggleStarIcon() {
   }
 }
 
+
 function chooseIcon(event) {
   if (event.target.dataset.name === "delete-button") {
     deleteCard(event.target.id);
   }
   if (event.target.dataset.name === "star-icon" || "star-active-icon") {
     toggleFavorite(event.target.id);
+    console.log("working")
   }
 }
