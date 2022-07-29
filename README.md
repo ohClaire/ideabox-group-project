@@ -51,9 +51,9 @@
 3. View the project in the browser by running `open index.html` in your terminal.
 
 ## Contributors
-Catalyst: *see LinkedIn profile [here](https://www.linkedin.com/in/catalyst-278156246/)*
-Derek Cooper: *see LinkedIn profile [here](https://www.linkedin.com/in/derek-cooper-a8798323a/)*
-Hannah Celemen: *see LinkedIn profile [here](https://www.linkedin.com/in/hannah-celemen/)*
+[Catalyst](https://www.linkedin.com/in/catalyst-278156246/)
+[Derek Cooper](https://www.linkedin.com/in/derek-cooper-a8798323a/)
+[Hannah Celemen](https://www.linkedin.com/in/hannah-celemen/)
 
 ## Sources
 - [MDN](https://developer.mozilla.org/en-US/docs/Learn/HTML/Howto/Use_data_attributes)
