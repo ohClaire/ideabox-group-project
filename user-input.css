@@ -1,9 +1,21 @@
 .user-form--section {
   display: flex;
-  flex-direction: column;
   background-color: #A9AAD2;
+  justify-content: center;
   align-items: center;
   padding: 20px;
+  font-family: Open Sans;
+}
+
+.hold-form-and-bar {
+  flex-shrink: 1;
+  flex-basis: 280px;
+}
+
+.user-form--section label {
+  font-size: 12px;
+  font-weight: bolder;
+  padding: 4px
 }
 
 .user-form--inputs {
@@ -11,22 +23,31 @@
   flex-direction: column;
 }
 
+.input-box {
+  border: 1px solid #5356a4;
+
+}
+
+#body-box {
+  height: 60px;
+  font-size: 12px;
+}
+
+.user-form--button:disabled {
+  background-color: #575761;
+  border: 2px solid #575761;
+  cursor: not-allowed;
+}
+
 .user-form--button {
+  font-size: 10px;
   background-color: #1F1F3D;
   color: white;
-}
-
-.search-icon {
-  width: 20px;
-  height: 20px;
-  background-color: #1F1F3D;
-  display: flex;
-  /* flex-grow: 1; */
-}
-
-.user-form--searchbar {
-  display: flex;
-  flex-grow: 4;
+  border: 2px solid #1F1F3D;
+  border-style: solid;
+  padding: 5px;
+  height: 30px;
+  border-radius: 2px;
 }
 
 .user-form--searchbox {
@@ -35,17 +56,49 @@
   align-items: center;
 }
 
+.box-search-icon {
+  background-color: #1F1F3D;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.search-icon {
+  width: 13px;
+  background-color: #1F1F3D;
+  display: flex;
+}
+
+.user-form--searchbar {
+  display: flex;
+  flex-grow: 1;
+  font-size: 9px;
+  height: 22px;
+  border: 2px solid #1F1F3D;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+
+}
 
 
 
 
 
+.idea-title {
+  font-weight: bold;
+}
+
+.idea-body {
+  font-weight: lighter;
+}
 
 .idea-cards--area {
   display: flex;
   flex-wrap: wrap;
 }
-
 
 .idea-card {
   display: flex;
@@ -66,6 +119,11 @@
   height: 20px;
 }
 
+.star-icon {
+  width: 20px;
+  height: 20px;
+}
+
 .delete-icon {
   width: 20px;
   height: 20px;
@@ -76,7 +134,6 @@
   height: 150px;
 }
 
-
 .card-comments {
   background-color: #5356a4;
   margin: -5px;
@@ -84,6 +141,7 @@
   display: flex;
   justify-content: start;
   color: #e9e9f3;
+  font-size: small;
 }
 
 .plus-icon {
