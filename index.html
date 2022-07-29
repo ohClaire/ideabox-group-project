@@ -7,7 +7,6 @@
   <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
   <title>IdeaBox</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="./user-input.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css">
   <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
 </head>
@@ -19,7 +18,9 @@
       <hr class="divider">
       <div class="filter-starred">
         <p>Filter Starred Ideas</p>
-        <button class="starred-ideas--button">Show Starred Ideas</button>
+        <span class="center-button">
+          <button class="starred-ideas--button">Show Starred Ideas</button>
+        </span>
       </div>
       <hr class="divider">
     </div>
@@ -31,7 +32,7 @@
             <input class="input-box" type="text" id="title-box" name="title">
             <br>
             <label for="body">Body</label>
-            <textarea class="input-box" type="text" id="body-box" name="body"></textarea>
+            <textarea class="input-box body" type="text" id="body-box" name="body"></textarea>
             <br>
             <button class="user-form--button" disabled>Save</button>
           </form>

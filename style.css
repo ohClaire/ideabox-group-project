@@ -1,67 +1,225 @@
 .page {
-    border: 1px solid black;
-    font-family: Open Sans;
-    display: flex;
-    flex-direction: row;
+  border: 1px solid black;
+  font-family: Open Sans;
+  display: flex;
+  flex-direction: row;
 }
 
 .navbar {
-    padding: 5px 10px;
-    width: 200px;
-    height: 800px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: stretch;
-    background-color: #1f1f3d;
-    color: white;
+  padding: 5px 10px;
+  width: 200px;
+  height: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  background-color: #1f1f3d;
+  color: white;
 }
 
 .title {
-    font-size: medium;
+  font-size: medium;
 }
 
 .filter-starred {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    font-size: small;
-    color: #BFBFDD;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  font-size: small;
+  font-weight: bolder;
+  color: #bfbfdd;
 }
 
 .starred-ideas--button {
-    height: fit-content;
-    width: fit-content;
-    background-color: #5356A4;
-    padding: 8px 25px;
-    font-size: medium;
-    margin: 10px 0px;
-    font-size: 10px;
-    color: white;
-    border: 2px solid #5356A4;
-    border-style: solid;
-    border-radius: 2px;
+  height: fit-content;
+  width: fit-content;
+  background-color: #5356a4;
+  padding: 8px 25px;
+  font-size: medium;
+  margin: 10px 0px;
+  font-size: 15px;
+  font-weight: bolder;
+  color: white;
+  border: 2px solid #5356a4;
+  border-style: solid;
+  border-radius: 2px;
+  display: flex;
+}
+
+.center-button {
+  display: flex;
+  justify-content: center;
 }
 
 .starred-ideas--button:disabled {
-    background-color: #575761;
-    border: 2px solid #575761;
-    cursor: not-allowed;
-  }
+  background-color: #575761;
+  border: 2px solid #575761;
+  cursor: not-allowed;
+}
 
 hr.divider {
-    border-top: 1px solid #353567;
-    width: 228px;
-    margin-left: -20px;
-    opacity: 20%;
+  border-top: 1px solid #353567;
+  width: 228px;
+  margin-left: -20px;
+  margin-right: -10px;
+  opacity: 20%;
 }
 
 .right-side {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .hidden {
-    display: none;
+  display: none;
+}
+
+.user-form--section {
+  display: flex;
+  background-color: #A9AAD2;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  font-family: Open Sans;
+}
+
+.hold-form-and-bar {
+  flex-shrink: 1;
+  flex-basis: 280px;
+}
+
+.user-form--section label {
+  font-size: 12px;
+  font-weight: bolder;
+  padding: 4px
+}
+
+.user-form--inputs {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-box {
+  border: 1px solid #5356a4;
+
+}
+
+.body {
+  height: 60px;
+  font-size: 16px;
+}
+
+.user-form--button:disabled {
+  background-color: #2b2b57c7;
+  border: 1px solid #2b2b57c7;
+  cursor: not-allowed;
+}
+
+.user-form--button {
+  font-size: 12px;
+  background-color: #1F1F3D;
+  color: white;
+  border: 2px solid #1F1F3D;
+  border-style: solid;
+  padding: 5px;
+  height: 32px;
+  border-radius: 2px;
+}
+
+.user-form--searchbox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.box-search-icon {
+  background-color: #2b2b57c7;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  justify-content: center;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.search-icon {
+  width: 15px;
+  display: flex;
+}
+
+.user-form--searchbar {
+  display: flex;
+  flex-grow: 1;
+  font-size: 9px;
+  font-weight: lighter;
+  height: 22px;
+  border: 2px solid #2b2b57c7;
+  border-left: none;
+  padding-left: 6px;
+}
+
+.idea-title {
+  font-weight: bold;
+}
+
+.idea-body {
+  font-weight: lighter;
+}
+
+.idea-cards--area {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.idea-card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #2b2b57c7;
+  margin: 10px;
+  padding: 5px;
+  width: 150px;
+}
+
+.card-header {
+  background-color: #1F1F3D;
+  margin: -5px;
+  margin-top: -6px
+}
+
+.star-active-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.star-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.delete-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 115px;
+}
+
+.card-body {
+  height: 150px;
+}
+
+.card-comments {
+  background-color: #5356a4;
+  margin: -5px;
+  height: 20px;
+  display: flex;
+  justify-content: start;
+  color: #e9e9f3;
+  font-size: small;
+}
+
+.plus-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: flex-start;
 }
