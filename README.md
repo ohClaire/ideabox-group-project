@@ -60,6 +60,7 @@ Hannah Celemen: *see LinkedIn profile [here](https://www.linkedin.com/in/hannah-
 - [W3Schools](https://www.w3schools.com/cssref/pr_class_cursor.asp)
 - [BEM](http://getbem.com/introduction/)
 - [Pluralsight](https://www.pluralsight.com/guides/semantic-html)
+- [CSS-Tricks](css-tricks.com/snippets/css/a-guide-to-flexbox/)
 
 
 ## Project Specs
