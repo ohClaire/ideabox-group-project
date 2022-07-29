@@ -1,26 +1,26 @@
 // query selector below
-const titleInput = document.querySelector('#title-box');
-const bodyInput = document.querySelector('#body-box');
+const titleInput = document.querySelector("#title-box");
+const bodyInput = document.querySelector("#body-box");
 // commentInput = document.querySelector('.card-comments');
-const saveButton = document.querySelector('.user-form--button');
-const ideaCardsArea = document.querySelector('.idea-cards--area');
-const ideaCard = document.querySelector('.idea-card');
+const saveButton = document.querySelector(".user-form--button");
+const ideaCardsArea = document.querySelector(".idea-cards--area");
+const ideaCard = document.querySelector(".idea-card");
 
 //global variables
 const listOfCards = [];
 
 //event listeners below
-saveButton.addEventListener('click', saveUserInfo);
-window.addEventListener('load', createExampleIdeaCard);
-titleInput.addEventListener('input', handleChange);
-bodyInput.addEventListener('input', handleChange);
-saveButton.addEventListener('load', disableButton);
+saveButton.addEventListener("click", saveUserInfo);
+window.addEventListener("load", createExampleIdeaCard);
+titleInput.addEventListener("input", handleChange);
+bodyInput.addEventListener("input", handleChange);
+saveButton.addEventListener("load", disableButton);
 // disable show starred button on load
-ideaCardsArea.addEventListener('click', chooseIcon);
+ideaCardsArea.addEventListener("click", chooseIcon);
 
 function createExampleIdeaCard() {
-  var exampleCard = new Idea('Example Idea', 'I think big thoughts!')
-  listOfCards.unshift(exampleCard)
+  var exampleCard = new Idea("Example Idea", "I think big thoughts!");
+  listOfCards.unshift(exampleCard);
   renderIdeaCard();
 }
 
@@ -29,21 +29,23 @@ function renderIdeaCard() {
   for (let i = 0; i < listOfCards.length; i++) {
     // could add if condition here to change star icon state
     ideaCardsArea.innerHTML += `
-    <section class="idea-card">
-      <div class="card-header">
-        <img name="star-icon" id="${listOfCards[i].id}" class="star-icon" src="./assets/star.svg" alt="star-icon">
-        <img name="star-active" id="${listOfCards[i].id}" class="star-active-icon hidden" src="./assets/star-active.svg" alt="star-icon">
-        <img name="delete-button" id="${listOfCards[i].id}" class="delete-icon" src="./assets/delete.svg" alt="delete-icon">
-      </div>
-      <div class="card-body">
-        <p class="idea-title">${listOfCards[i].title}</p>
-        <p>${listOfCards[i].body}</p>
-      </div>
-      <div class="card-comments">
-        <img class="plus-icon" src="./assets/comment.svg" alt="plus-icon">
-      <div>comment</div>
-    </div>
-  </section>`;
+      <section class="idea-card">
+        <div class="card-header">
+          <img data-name="star-icon" id="${listOfCards[i].id}" class="star-icon" src="./assets/star.svg" alt="star-icon">
+          <img data-name="star-active" id="${listOfCards[i].id}" class="star-active-icon hidden"
+            src="./assets/star-active.svg" alt="star-icon">
+          <img data-name="delete-button" id="${listOfCards[i].id}" class="delete-icon" src="./assets/delete.svg"
+            alt="delete-icon">
+        </div>
+        <div class="card-body">
+          <p class="idea-title">${listOfCards[i].title}</p>
+          <p class="idea-body">${listOfCards[i].body}</p>
+        </div>
+        <div class="card-comments">
+          <img class="plus-icon" src="./assets/comment.svg" alt="plus-icon">
+          <div>comment</div>
+        </div>
+      </section>`;
   }
 }
 
@@ -59,7 +61,6 @@ function saveUserInfo(event) {
   }
   disableButton();
 }
-
 
 function disableButton() {
   saveButton.disabled = true;
@@ -89,8 +90,8 @@ function deleteCard(ideaCardID) {
 function toggleFavorite(ideaCardID) {
   for (let i = 0; i < listOfCards.length; i++) {
     if (ideaCardID == listOfCards[i].id) {
-      listOfCards[i].star = !listOfCards[i].star
-      toggleStarIcon(ideaCardID)
+      listOfCards[i].star = !listOfCards[i].star;
+      toggleStarIcon(ideaCardID);
     }
   }
 }
@@ -99,18 +100,18 @@ function toggleStarIcon(ideaCardID) {
   if (listOfCards[i].star) {
     // left off here
   }
-    console.log(starIcon);
+  console.log(starIcon);
 
-  starIcon.classList.add('hidden');
-  starActiveIcon.classList.remove('hidden');
+  starIcon.classList.add("hidden");
+  starActiveIcon.classList.remove("hidden");
 }
 
 function chooseIcon(event) {
-
-  if (event.target.name === 'delete-button') {
+  if (event.target.dataset.name === "delete-button") {
     deleteCard(event.target.id);
-    console.log('delete')
-  } 
-  if (event.target.name === 'star-icon') {
-    toggleFavorite(event.target.id);  }
+    console.log("delete");
+  }
+  if (event.target.dataset.name === "star-icon") {
+    toggleFavorite(event.target.id);
+  }
 }
