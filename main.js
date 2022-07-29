@@ -88,23 +88,34 @@ function deleteCard(ideaCardID) {
 }
 
 function toggleFavorite(ideaCardID) {
+  const starIcon = document.querySelector('.star-icon');
+  const starActiveIcon = document.querySelector('.star-active-icon')
+
   for (let i = 0; i < listOfCards.length; i++) {
     if (ideaCardID == listOfCards[i].id) {
-      listOfCards[i].star = !listOfCards[i].star;
-      toggleStarIcon(ideaCardID);
+      if (listOfCards[i].star) {
+        starActiveIcon.classList.toggle("hidden");
+      } else {
+        starIcon.classList.toggle("hidden");
+      }
+
     }
   }
 }
 
-function toggleStarIcon(ideaCardID) {
-  if (listOfCards[i].star) {
-    // left off here
-  }
-  console.log(starIcon);
+// function toggleStarIcon(ideaCardID) {
+//   const starIcon = document.querySelectorAll('.star-icon');
+//   const starActiveIcon = document.querySelectorAll('.star-active-icon')
 
-  starIcon.classList.add("hidden");
-  starActiveIcon.classList.remove("hidden");
-}
+//   for (var i = 0; i < starIcon.length; i++) {
+//     if (starIcon[i].id === ideaCardID) {
+//       starIcon.classList.toggle("hidden");
+//       starActiveIcon.classList.toggle("hidden");
+//       console.log(starIcon[i].id, ideaCardID)
+//     }
+//   }
+
+// }
 
 function chooseIcon(event) {
   if (event.target.dataset.name === "delete-button") {
@@ -113,5 +124,6 @@ function chooseIcon(event) {
   }
   if (event.target.dataset.name === "star-icon") {
     toggleFavorite(event.target.id);
+    console.log("working")
   }
 }
