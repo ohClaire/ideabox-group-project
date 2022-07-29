@@ -5,11 +5,9 @@ const bodyInput = document.querySelector('#body-box');
 const saveButton = document.querySelector('.user-form--button');
 const ideaCardsArea = document.querySelector('.idea-cards--area');
 const ideaCard = document.querySelector('.idea-card');
-const ideaCardX = document.querySelector('.delete-icon');
-const starIcon = document.querySelector('.star-icon');
 
 //global variables
-const listOfBoxes = [];
+const listOfCards = [];
 
 //event listeners below
 saveButton.addEventListener('click', saveUserInfo);
@@ -17,35 +15,37 @@ window.addEventListener('load', createExampleIdeaCard);
 titleInput.addEventListener('input', handleChange);
 bodyInput.addEventListener('input', handleChange);
 saveButton.addEventListener('load', disableButton);
+// disable show starred button on load
 ideaCardsArea.addEventListener('click', chooseIcon);
 
 function createExampleIdeaCard() {
   var exampleCard = new Idea('Example Idea', 'I think big thoughts!')
-  listOfBoxes.unshift(exampleCard)
+  listOfCards.unshift(exampleCard)
   renderIdeaCard();
 }
 
 function renderIdeaCard() {
   ideaCardsArea.innerHTML = "";
-  for (let i = 0; i < listOfBoxes.length; i++) {
+  for (let i = 0; i < listOfCards.length; i++) {
+    // could add if condition here to change star icon state
     ideaCardsArea.innerHTML += `
-    <div class="idea-card">
-    <div class="card-header">
-      <img id="${listOfBoxes[i].id}" class="star-icon" src="./assets/star.svg" alt="star-icon">
-      <img id="${listOfBoxes[i].id}" class="delete-icon" src="./assets/delete.svg" alt="delete-icon">
-    </div>
-    <div class="card-body">
-      <p class="idea-title">${listOfBoxes[i].title}</p>
-      <p>${listOfBoxes[i].body}</p>
-    </div>
-    <div class="card-comments"><img class="plus-icon" src="./assets/comment.svg" alt="plus-icon">
+    <section class="idea-card">
+      <div class="card-header">
+        <img name="star-icon" id="${listOfCards[i].id}" class="star-icon" src="./assets/star.svg" alt="star-icon">
+        <img name="star-active" id="${listOfCards[i].id}" class="star-active-icon hidden" src="./assets/star-active.svg" alt="star-icon">
+        <img name="delete-button" id="${listOfCards[i].id}" class="delete-icon" src="./assets/delete.svg" alt="delete-icon">
+      </div>
+      <div class="card-body">
+        <p class="idea-title">${listOfCards[i].title}</p>
+        <p>${listOfCards[i].body}</p>
+      </div>
+      <div class="card-comments">
+        <img class="plus-icon" src="./assets/comment.svg" alt="plus-icon">
       <div>comment</div>
     </div>
-  </div>`;
+  </section>`;
   }
-
 }
-
 
 function saveUserInfo(event) {
   event.preventDefault();
@@ -53,7 +53,7 @@ function saveUserInfo(event) {
   const ideaBox = new Idea(titleInput.value, bodyInput.value);
 
   if (titleInput.value && bodyInput.value) {
-    listOfBoxes.unshift(ideaBox);
+    listOfCards.unshift(ideaBox);
     renderIdeaCard();
     document.forms[0].reset();
   }
@@ -77,36 +77,40 @@ function handleChange() {
   }
 }
 
-function deleteCard(event) {
-  for (let i = 0; i < listOfBoxes.length; i++) {
-    console.log('delete', event.target)
-    if (event.target.id == listOfBoxes[i].id) {
-      listOfBoxes.splice(i, 1);
-
+function deleteCard(ideaCardID) {
+  for (let i = 0; i < listOfCards.length; i++) {
+    if (ideaCardID == listOfCards[i].id) {
+      listOfCards.splice(i, 1);
       renderIdeaCard();
     }
   }
 }
 
-function toggleStar(event) {
-  for (let i = 0; i < listOfBoxes.length; i++) {
-    console.log('star', event.target)
-    if (event.target.id == listOfBoxes[i].id) {
-      listOfBoxes[i].star = true;
-      console.log(listOfBoxes)
+function toggleFavorite(ideaCardID) {
+  for (let i = 0; i < listOfCards.length; i++) {
+    if (ideaCardID == listOfCards[i].id) {
+      listOfCards[i].star = !listOfCards[i].star
+      toggleStarIcon(ideaCardID)
     }
   }
 }
 
+function toggleStarIcon(ideaCardID) {
+  if (listOfCards[i].star) {
+    // left off here
+  }
+    console.log(starIcon);
+
+  starIcon.classList.add('hidden');
+  starActiveIcon.classList.remove('hidden');
+}
+
 function chooseIcon(event) {
-  console.log(event.target)
-  console.log(ideaCardX)
-  if (event.target === ideaCardX) {
-    // deleteCard(event.target);
+
+  if (event.target.name === 'delete-button') {
+    deleteCard(event.target.id);
     console.log('delete')
   } 
-  if (event.target === starIcon) {
-    // toggleStar(event.target);
-    console.log('toggle')
-  }
+  if (event.target.name === 'star-icon') {
+    toggleFavorite(event.target.id);  }
 }
