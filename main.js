@@ -31,8 +31,8 @@ function renderIdeaCard() {
     ideaCardsArea.innerHTML += `
       <section class="idea-card">
         <div class="card-header">
-          <img data-name="star-icon" id="${listOfCards[i].id}" class="star-icon" src="./assets/star.svg" alt="star-icon">
-          <img data-name="star-active" id="${listOfCards[i].id}" class="star-active-icon hidden"
+          <img data-name="star-icon" id="${listOfCards[i].id}" class="${starIcon}" src="./assets/star.svg" alt="star-icon">
+          <img data-name="star-active" id="${listOfCards[i].id}" class="${starActiveIcon}"
             src="./assets/star-active.svg" alt="star-icon">
           <img data-name="delete-button" id="${listOfCards[i].id}" class="delete-icon" src="./assets/delete.svg"
             alt="delete-icon">
@@ -93,36 +93,40 @@ function toggleFavorite(ideaCardID) {
 
   for (let i = 0; i < listOfCards.length; i++) {
     if (ideaCardID == listOfCards[i].id) {
-      if (listOfCards[i].star) {
-        starActiveIcon.classList.toggle("hidden");
-      } else {
-        starIcon.classList.toggle("hidden");
-      }
-
+      listOfCards[i].star = !listOfCards[i].star;
+      toggleStarIcon(ideaCardID)
     }
   }
 }
 
-// function toggleStarIcon(ideaCardID) {
-//   const starIcon = document.querySelectorAll('.star-icon');
-//   const starActiveIcon = document.querySelectorAll('.star-active-icon')
+var starIcon = 'star-icon';
+var starActiveIcon = 'star-active-icon hidden';
+var ideaCardID = '';
 
-//   for (var i = 0; i < starIcon.length; i++) {
-//     if (starIcon[i].id === ideaCardID) {
-//       starIcon.classList.toggle("hidden");
-//       starActiveIcon.classList.toggle("hidden");
-//       console.log(starIcon[i].id, ideaCardID)
-//     }
-//   }
+function toggleStarIcon() {
+  for (let i = 0; i < listOfCards.length; i++) {
+    if (ideaCardID == listOfCards[i].id) {
+      if (listOfCards[i].star) {
+        console.log(listOfCards[i].star);
+        starActiveIcon = "star-active-icon"
+        starIcon = "star-icon hidden"
+        renderIdeaCard()
+      } else {
+        console.log(listOfCards[i].star);
+        starActiveIcon = "star-active-icon hidden"
+        starIcon = "star-icon"
+        renderIdeaCard()
+      }
+    }
+  }
+}
 
-// }
 
 function chooseIcon(event) {
   if (event.target.dataset.name === "delete-button") {
     deleteCard(event.target.id);
-    console.log("delete");
   }
-  if (event.target.dataset.name === "star-icon") {
+  if (event.target.dataset.name === "star-icon" || "star-active-icon") {
     toggleFavorite(event.target.id);
     console.log("working")
   }
