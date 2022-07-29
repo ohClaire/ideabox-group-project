@@ -51,8 +51,8 @@
 3. cd into the project
 
 ## Contributors
-Catalyst: *see LinkedIn profile [here]()*
-Derek Cooper: *see LinkedIn profile [here]()*
+Catalyst: *see LinkedIn profile [here](https://www.linkedin.com/in/catalyst-278156246/)*
+Derek Cooper: *see LinkedIn profile [here](https://www.linkedin.com/in/derek-cooper-a8798323a/)*
 Hannah Celemen: *see LinkedIn profile [here](https://www.linkedin.com/in/hannah-celemen/)*
 
 ## Sources
