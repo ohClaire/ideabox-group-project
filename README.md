@@ -47,8 +47,8 @@
 
 ## Set Up
 1. Fork and clone this repo.
-2. Type cd IdeaBox to move into the root directory.
-3. cd into the project
+2. Type `cd` to move into the root directory.
+3. View the project in the browser by running `open index.html` in your terminal.
 
 ## Contributors
 Catalyst: *see LinkedIn profile [here](https://www.linkedin.com/in/catalyst-278156246/)*
