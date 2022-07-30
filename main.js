@@ -1,14 +1,11 @@
-// query selector below
 const titleInput = document.querySelector("#title-box");
 const bodyInput = document.querySelector("#body-box");
 const saveButton = document.querySelector(".user-form--button");
 const ideaCardsArea = document.querySelector(".idea-cards--area");
 const ideaCard = document.querySelector(".idea-card");
 
-//global variables
 const listOfCards = [];
 
-//event listeners below
 saveButton.addEventListener("click", saveUserInfo);
 window.addEventListener("load", createExampleIdeaCard);
 titleInput.addEventListener("input", handleChange);
@@ -50,11 +47,17 @@ function renderIdeaCard() {
   }
 }
 
+function createCard() {
+  const ideaCard = new Idea(titleInput.value, bodyInput.value);
+
+  return ideaCard;
+}
+
 function saveUserInfo(event) {
   event.preventDefault();
-  const ideaBox = new Idea(titleInput.value, bodyInput.value);
+  
   if (titleInput.value && bodyInput.value) {
-    listOfCards.unshift(ideaBox);
+    listOfCards.unshift(createCard());
     renderIdeaCard();
     document.forms[0].reset();
   }
@@ -77,30 +80,44 @@ function handleChange() {
   }
 }
 
-function deleteCard(ideaCardID) {
-  for (let i = 0; i < listOfCards.length; i++) {
-    if (ideaCardID == listOfCards[i].id) {
-      listOfCards.splice(i, 1);
-      renderIdeaCard();
-    }
+function chooseIcon(event) {
+  var ideaCardID = convertString(event.target.id);
+ 
+  if (event.target.dataset.name === "delete-button") {
+    deleteCard(ideaCardID);
+    
+  }
+  
+  if (event.target.dataset.name === "star-icon") {
+    favoriteCard(ideaCardID);
   }
 }
 
-function chooseIcon(event) {
-  if (event.target.dataset.name === "delete-button") {
-    deleteCard(event.target.id);
-  }
-  if (event.target.dataset.name === "star-icon") {
-    favoriteCard(event.target.id);
+function convertString(string) {
+  return parseInt(string);
+}
+
+function deleteCard(ideaCardID) {
+
+  for (let i = 0; i < listOfCards.length; i++) {
+
+    if (ideaCardID === listOfCards[i].id) {
+      listOfCards.splice(i, 1);
+
+      renderIdeaCard();
+    }
   }
 }
 
 function favoriteCard(ideaCardID) {
-  var ideaCardID = parseInt(ideaCardID);
+
   for (let i = 0; i < listOfCards.length; i++) {
+
     if (ideaCardID === listOfCards[i].id) {
       listOfCards[i].star = !listOfCards[i].star;
+
       renderIdeaCard();
     }
   }
 }
+
