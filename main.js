@@ -6,6 +6,7 @@ const saveButton = document.querySelector(".user-form--button");
 const ideaCardsArea = document.querySelector(".idea-cards--area");
 const ideaCard = document.querySelector(".idea-card");
 
+
 //global variables
 const listOfCards = [];
 
@@ -27,13 +28,11 @@ function createExampleIdeaCard() {
 function renderIdeaCard() {
   ideaCardsArea.innerHTML = "";
   for (let i = 0; i < listOfCards.length; i++) {
-    // could add if condition here to change star icon state
+
     ideaCardsArea.innerHTML += `
       <section class="idea-card">
         <div class="card-header">
-          <img data-name="star-icon" id="${listOfCards[i].id}" class="${starIcon}" src="./assets/star.svg" alt="star-icon">
-          <img data-name="star-active" id="${listOfCards[i].id}" class="${starActiveIcon}"
-            src="./assets/star-active.svg" alt="star-icon">
+          <img data-name="star-icon" id="${listOfCards[i].id}" class="star-icon" src="./assets/star.svg" alt="star-icon">
           <img data-name="delete-button" id="${listOfCards[i].id}" class="delete-icon" src="./assets/delete.svg"
             alt="delete-icon">
         </div>
@@ -87,47 +86,51 @@ function deleteCard(ideaCardID) {
   }
 }
 
-function toggleFavorite(ideaCardID) {
-  const starIcon = document.querySelector('.star-icon');
-  const starActiveIcon = document.querySelector('.star-active-icon')
-
-  for (let i = 0; i < listOfCards.length; i++) {
-    if (ideaCardID == listOfCards[i].id) {
-      listOfCards[i].star = !listOfCards[i].star;
-      toggleStarIcon(ideaCardID)
-    }
-  }
-}
-
-var starIcon = 'star-icon';
-var starActiveIcon = 'star-active-icon hidden';
-var ideaCardID = '';
-
-function toggleStarIcon() {
-  for (let i = 0; i < listOfCards.length; i++) {
-    if (ideaCardID == listOfCards[i].id) {
-      if (listOfCards[i].star) {
-        console.log(listOfCards[i].star);
-        starActiveIcon = "star-active-icon"
-        starIcon = "star-icon hidden"
-        renderIdeaCard()
-      } else {
-        console.log(listOfCards[i].star);
-        starActiveIcon = "star-active-icon hidden"
-        starIcon = "star-icon"
-        renderIdeaCard()
-      }
-    }
-  }
-}
-
-
 function chooseIcon(event) {
   if (event.target.dataset.name === "delete-button") {
     deleteCard(event.target.id);
   }
-  if (event.target.dataset.name === "star-icon" || "star-active-icon") {
-    toggleFavorite(event.target.id);
-    console.log("working")
+
+  if (event.target.dataset.name === "star-icon") {
+    favoriteCard(event.target.id);
   }
+}
+
+// const starIcon = document.querySelector('.star-icon');
+// const starActiveIcon = document.querySelector('.star-active-icon');
+
+function favoriteCard(ideaCardID) {
+  var ideaCardID = parseInt(ideaCardID);
+
+  for (let i = 0; i < listOfCards.length; i++) {
+    
+    if (ideaCardID === listOfCards[i].id) {
+      listOfCards[i].star = !listOfCards[i].star; // updates data model
+      
+      changeStarIcon(ideaCardID); // this will update the DOM
+    }
+  }
+}
+
+function changeStarIcon(ideaCardID) {
+  for (let i = 0; i < listOfCards.length; i++) {
+    
+    if (ideaCardID === listOfCards[i].id) {
+
+      if (listOfCards[i].star) {
+        activateStar(ideaCardID);
+      } else {
+        deactivateStar(ideaCardID);
+      }
+
+    }
+  }
+}
+
+function activateStar(ideaCardID) {
+  document.getElementById(ideaCardID).src = "./assets/star-active.svg" 
+}
+
+function deactivateStar(ideaCardID) {
+  document.getElementById(ideaCardID).src = "./assets/star.svg" 
 }
