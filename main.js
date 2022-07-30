@@ -28,7 +28,7 @@ function createExampleIdeaCard() {
 function renderIdeaCard() {
   ideaCardsArea.innerHTML = "";
   for (let i = 0; i < listOfCards.length; i++) {
-
+    
     ideaCardsArea.innerHTML += `
       <section class="idea-card">
         <div class="card-header">
