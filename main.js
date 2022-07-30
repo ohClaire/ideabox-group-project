@@ -5,10 +5,12 @@ const bodyInput = document.querySelector("#body-box");
 const saveButton = document.querySelector(".user-form--button");
 const ideaCardsArea = document.querySelector(".idea-cards--area");
 const ideaCard = document.querySelector(".idea-card");
-
+const filterButton = document.querySelector(".starred-ideas--button")
+const searchBar = document.querySelector('.user-form--searchbar')
 
 //global variables
 const listOfCards = [];
+const starredIdeas = [];
 
 //event listeners below
 saveButton.addEventListener("click", saveUserInfo);
@@ -18,27 +20,36 @@ bodyInput.addEventListener("input", handleChange);
 saveButton.addEventListener("load", disableButton);
 // disable show starred button on load
 ideaCardsArea.addEventListener("click", chooseIcon);
+filterButton.addEventListener("click", showStarredCards)
+searchBar.addEventListener("input", matchToCard)
 
 function createExampleIdeaCard() {
   var exampleCard = new Idea("Example Idea", "I think big thoughts!");
   listOfCards.unshift(exampleCard);
-  renderIdeaCard();
+  renderIdeaCard(listOfCards);
 }
 
-function renderIdeaCard() {
-  ideaCardsArea.innerHTML = "";
-  for (let i = 0; i < listOfCards.length; i++) {
+function createCard() {
+  const ideaCard = new Idea(titleInput.value, bodyInput.value);
 
+  return ideaCard;
+}
+
+
+function renderIdeaCard(mainList) {
+  ideaCardsArea.innerHTML = "";
+  for (let i = 0; i < mainList.length; i++) {
+    var starImageSrc = changeStarImageSrc(mainList[i]);
     ideaCardsArea.innerHTML += `
       <section class="idea-card">
         <div class="card-header">
-          <img data-name="star-icon" id="${listOfCards[i].id}" class="star-icon" src="./assets/star.svg" alt="star-icon">
-          <img data-name="delete-button" id="${listOfCards[i].id}" class="delete-icon" src="./assets/delete.svg"
+          <img data-name="star-icon" id="${mainList[i].id}" class="star-icon" src="${starImageSrc}" alt="star-icon">
+          <img data-name="delete-button" id="${mainList[i].id}" class="delete-icon" src="./assets/delete.svg"
             alt="delete-icon">
         </div>
         <div class="card-body">
-          <p class="idea-title">${listOfCards[i].title}</p>
-          <p class="idea-body">${listOfCards[i].body}</p>
+          <p class="idea-title">${mainList[i].title}</p>
+          <p class="idea-body">${mainList[i].body}</p>
         </div>
         <div class="card-comments">
           <img class="plus-icon" src="./assets/comment.svg" alt="plus-icon">
@@ -51,11 +62,10 @@ function renderIdeaCard() {
 function saveUserInfo(event) {
   event.preventDefault();
 
-  const ideaBox = new Idea(titleInput.value, bodyInput.value);
 
   if (titleInput.value && bodyInput.value) {
-    listOfCards.unshift(ideaBox);
-    renderIdeaCard();
+    listOfCards.unshift(createCard());
+    renderIdeaCard(listOfCards);
     document.forms[0].reset();
   }
   disableButton();
@@ -78,10 +88,11 @@ function handleChange() {
 }
 
 function deleteCard(ideaCardID) {
+  var ideaCardID = parseInt(ideaCardID);
   for (let i = 0; i < listOfCards.length; i++) {
-    if (ideaCardID == listOfCards[i].id) {
+    if (ideaCardID === listOfCards[i].id) {
       listOfCards.splice(i, 1);
-      renderIdeaCard();
+      renderIdeaCard(listOfCards);
     }
   }
 }
@@ -96,41 +107,55 @@ function chooseIcon(event) {
   }
 }
 
-// const starIcon = document.querySelector('.star-icon');
-// const starActiveIcon = document.querySelector('.star-active-icon');
-
 function favoriteCard(ideaCardID) {
   var ideaCardID = parseInt(ideaCardID);
+  var starStatus = false;
 
   for (let i = 0; i < listOfCards.length; i++) {
     
     if (ideaCardID === listOfCards[i].id) {
-      listOfCards[i].star = !listOfCards[i].star; // updates data model
-      
-      changeStarIcon(ideaCardID); // this will update the DOM
+      listOfCards[i].star = !listOfCards[i].star;  
     }
+
+    renderIdeaCard(listOfCards);
+
+    starStatus = listOfCards[i].star;
+  }
+  return starStatus
+}
+
+function changeStarImageSrc(ideaCard) {
+  if (ideaCard.star) {
+    return "./assets/star-active.svg";
+  } else {
+    return "./assets/star.svg";
   }
 }
 
-function changeStarIcon(ideaCardID) {
+function showStarredCards() {
   for (let i = 0; i < listOfCards.length; i++) {
-    
-    if (ideaCardID === listOfCards[i].id) {
-
-      if (listOfCards[i].star) {
-        activateStar(ideaCardID);
-      } else {
-        deactivateStar(ideaCardID);
-      }
-
+    if (listOfCards[i].star) {
+      console.log('testing')
+      starredIdeas.push(listOfCards[i])
     }
+    console.log(starredIdeas)
+    renderIdeaCard(starredIdeas)
   }
+  changeFilterButton();
 }
 
-function activateStar(ideaCardID) {
-  document.getElementById(ideaCardID).src = "./assets/star-active.svg" 
+function changeFilterButton() {
+  filterButton.innerText = 'Show All Ideas';
 }
 
-function deactivateStar(ideaCardID) {
-  document.getElementById(ideaCardID).src = "./assets/star.svg" 
+function matchToCard() {
+  
+}
+
+function searchTitle() {
+
+}
+
+function searchBody() {
+
 }
