@@ -29,23 +29,23 @@ function renderIdeaCard() {
     if (listOfCards[i].star) {
       starImgSrc = "./assets/star-active.svg"
     } else {
-      starImgSrc = "./assets/star.svg" 
+      starImgSrc = "./assets/star.svg"
     }
     ideaCardsArea.innerHTML += `
       <section class="idea-card">
-        <div class="card-header">
+        <article class="card-header">
           <img data-name="star-icon" id="${listOfCards[i].id}" class="star-icon" src="${starImgSrc}" alt="star-icon">
           <img data-name="delete-button" id="${listOfCards[i].id}" class="delete-icon" src="./assets/delete.svg"
             alt="delete-icon">
-        </div>
-        <div class="card-body">
+        </article>
+        <article class="card-body">
           <p class="idea-title">${listOfCards[i].title}</p>
           <p class="idea-body">${listOfCards[i].body}</p>
-        </div>
-        <div class="card-comments">
+        </article>
+        <article class="card-comments">
           <img class="plus-icon" src="./assets/comment.svg" alt="plus-icon">
-          <div>comment</div>
-        </div>
+          <p>Comment</p>
+        </article>
       </section>`;
   }
 }
@@ -99,8 +99,8 @@ function favoriteCard(ideaCardID) {
   var ideaCardID = parseInt(ideaCardID);
   for (let i = 0; i < listOfCards.length; i++) {
     if (ideaCardID === listOfCards[i].id) {
-      listOfCards[i].star = !listOfCards[i].star; 
-      renderIdeaCard(); 
+      listOfCards[i].star = !listOfCards[i].star;
+      renderIdeaCard();
     }
   }
 }

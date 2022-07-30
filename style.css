@@ -195,6 +195,11 @@ hr.divider {
   height: 20px;
 }
 
+.star-icon:hover {
+  background-image: url(assets/star-active.svg);
+  box-shadow: 5px white;
+}
+
 .delete-icon {
   width: 20px;
   height: 20px;
@@ -202,6 +207,7 @@ hr.divider {
 }
 
 .card-body {
+  word-wrap: break-word;
   height: 150px;
 }
 
@@ -210,9 +216,14 @@ hr.divider {
   margin: -5px;
   height: 20px;
   display: flex;
-  justify-content: start;
+  align-items: center;
   color: #e9e9f3;
   font-size: small;
+  padding: 2px;
+}
+
+.card-comments p {
+  display: flex;
 }
 
 .plus-icon {
