@@ -6,7 +6,6 @@
   - [Technologies](#technologies)
   - [Features](#features)
   - [Page Demo](#page-demo)
-  - [Illustrations](#illustrations)
   - [Possible Future Extensions](#possible-future-extensions)
   - [Set Up](#set-up)
   - [Contributors](#contributors)
@@ -37,7 +36,7 @@
 - The x icon will remove or delete the card.
 
 ## Page Demo
-![Example of button functionality]()
+![Example of button functionality](https://media.giphy.com/media/rxkhdjpUekW9SHgyL5/giphy.gif)
 
 
 ## Possible Future Extensions
