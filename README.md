@@ -30,20 +30,20 @@
 
 ## Features
 - When a user loads the page, they will see that it is divided into three sections: 
-1. The side bar holds the name of the website and the option for the user to filter their starred ideas using the **Show Starred Ideas** button. 
-2. The top purple section holds a form that will accept user inputs for Title and Body. The **Save** button only works after the user has entered text in the input fields. 
-3. The bottom white section holds the idea cards. Each card has the Title and Body from the user's respective inputs. From here, the user can choose to **star**, **delete**, or **comment** on the card. 
+  1. The side bar holds the name of the website and the option for the user to filter their starred ideas using the **Show Starred Ideas** button. 
+  2. The top purple section holds a form that will accept user inputs for Title and Body. The **Save** button only works after the user has entered text in the input fields. Once clicked, it will add a new card to the section below. 
+  3. The bottom white section holds the idea cards. Each card has the Title and Body from the user's respective inputs. From here, the user can choose to **star** or **delete** the card. 
+- The star icon will change colors when clicked.
+- The x icon will remove or delete the card.
 
 ## Page Demo
 ![Example of button functionality]()
-
-## Illustrations
 
 
 ## Possible Future Extensions
 - Allow users to add a comment to their idea cards.
 - Allow users to search for ideas based on title.
-
+- Add scroll to the card so the user can add as much text as they want in the body.
 
 ## Set Up
 1. Fork and clone this repo.

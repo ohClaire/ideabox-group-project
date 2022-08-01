@@ -1,46 +1,52 @@
-const titleInput = document.querySelector("#title-box");
 const bodyInput = document.querySelector("#body-box");
-const saveButton = document.querySelector(".user-form--button");
-const ideaCardsArea = document.querySelector(".idea-cards--area");
 const ideaCard = document.querySelector(".idea-card");
+const ideaCardsArea = document.querySelector(".idea-cards--area");
+const saveButton = document.querySelector(".user-form--button");
+const titleInput = document.querySelector("#title-box");
 
 const listOfCards = [];
 
-saveButton.addEventListener("click", saveUserInfo);
-window.addEventListener("load", createExampleIdeaCard);
-titleInput.addEventListener("input", handleChange);
 bodyInput.addEventListener("input", handleChange);
-saveButton.addEventListener("load", disableButton);
 ideaCardsArea.addEventListener("click", chooseIcon);
+saveButton.addEventListener("click", saveUserInfo);
+titleInput.addEventListener("input", handleChange);
+window.addEventListener("load", createExampleIdeaCard);
 
 function createExampleIdeaCard() {
   var exampleCard = new Idea("Example Idea", "I think big thoughts!");
+
   listOfCards.unshift(exampleCard);
-  renderIdeaCard();
+
+  renderIdeaCard(listOfCards);
 }
 
-function renderIdeaCard() {
+function changeStarImageSrc(ideaCard) {
+  if (ideaCard.star) {
+    return "./assets/star-active.svg";
+  } else {
+    return "./assets/star.svg";
+  }
+}
+
+function renderIdeaCard(mainList) {
   ideaCardsArea.innerHTML = "";
-  var starImgSrc = ""
-  for (let i = 0; i < listOfCards.length; i++) {
-    if (listOfCards[i].star) {
-      starImgSrc = "./assets/star-active.svg"
-    } else {
-      starImgSrc = "./assets/star.svg"
-    }
+
+  for (let i = 0; i < mainList.length; i++) {
+    var starImgSrc = changeStarImageSrc(mainList[i]);
+
     ideaCardsArea.innerHTML += `
       <section class="idea-card">
         <article class="card-header">
-          <img data-name="star-icon" id="${listOfCards[i].id}" class="star-icon" src="${starImgSrc}" alt="star-icon">
-          <img data-name="delete-button" id="${listOfCards[i].id}" class="delete-icon" src="./assets/delete.svg"
+          <img data-name="star-icon" id="${mainList[i].id}" class="star-icon icon" src="${starImgSrc}" alt="star-icon">
+          <img data-name="delete-button" id="${mainList[i].id}" class="delete-icon icon" src="./assets/delete.svg"
             alt="delete-icon">
         </article>
         <article class="card-body">
-          <p class="idea-title">${listOfCards[i].title}</p>
-          <p class="idea-body">${listOfCards[i].body}</p>
+          <p class="idea-title">${mainList[i].title}</p>
+          <p class="idea-body">${mainList[i].body}</p>
         </article>
         <article class="card-comments">
-          <img class="plus-icon" src="./assets/comment.svg" alt="plus-icon">
+          <img class="plus-icon icon" src="./assets/comment.svg" alt="plus-icon">
           <p>Comment</p>
         </article>
       </section>`;
@@ -58,9 +64,12 @@ function saveUserInfo(event) {
   
   if (titleInput.value && bodyInput.value) {
     listOfCards.unshift(createCard());
-    renderIdeaCard();
+
+    renderIdeaCard(listOfCards);
+
     document.forms[0].reset();
   }
+
   disableButton();
 }
 
@@ -85,7 +94,6 @@ function chooseIcon(event) {
  
   if (event.target.dataset.name === "delete-button") {
     deleteCard(ideaCardID);
-    
   }
   
   if (event.target.dataset.name === "star-icon") {
@@ -104,7 +112,7 @@ function deleteCard(ideaCardID) {
     if (ideaCardID === listOfCards[i].id) {
       listOfCards.splice(i, 1);
 
-      renderIdeaCard();
+      renderIdeaCard(listOfCards);
     }
   }
 }
@@ -116,7 +124,7 @@ function favoriteCard(ideaCardID) {
     if (ideaCardID === listOfCards[i].id) {
       listOfCards[i].star = !listOfCards[i].star;
 
-      renderIdeaCard();
+      renderIdeaCard(listOfCards);
     }
   }
 }
