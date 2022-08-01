@@ -43,7 +43,7 @@
 ## Possible Future Extensions
 - Allow users to add a comment to their idea cards.
 - Allow users to search for ideas based on title.
-
+- Adding a scroll to our cards so the text length isn't restricted. 
 
 ## Set Up
 1. Fork and clone this repo.

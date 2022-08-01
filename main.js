@@ -20,9 +20,9 @@ bodyInput.addEventListener("input", handleChange);
 saveButton.addEventListener("load", disableButton);
 // disable show starred button on load
 ideaCardsArea.addEventListener("click", chooseIcon);
-filterButton.addEventListener("click", showStarredCards)
-searchBar.addEventListener("input", matchToCard)
-
+// filterButton.addEventListener("click", showStarredCards)
+// searchBar.addEventListener("input", matchToCard)
+window.addEventListener("load", loopThru)
 function createExampleIdeaCard() {
   var exampleCard = new Idea("Example Idea", "I think big thoughts!");
   listOfCards.unshift(exampleCard);
@@ -35,6 +35,17 @@ function createCard() {
   return ideaCard;
 }
 
+// loop through listOfCards array
+function iterateInList(mainList) {
+  for (let i = 0; i < mainList.length; i++) {
+    console.log(mainList[i])
+  }
+}
+
+function loopThru() {
+  console.log(createCard)
+  iterateInList(listOfCards)
+}
 
 function renderIdeaCard(mainList) {
   ideaCardsArea.innerHTML = "";
@@ -132,30 +143,36 @@ function changeStarImageSrc(ideaCard) {
   }
 }
 
-function showStarredCards() {
-  for (let i = 0; i < listOfCards.length; i++) {
-    if (listOfCards[i].star) {
-      console.log('testing')
-      starredIdeas.push(listOfCards[i])
-    }
-    console.log(starredIdeas)
-    renderIdeaCard(starredIdeas)
-  }
-  changeFilterButton();
-}
+// function showStarredCards() {
+//   for (let i = 0; i < listOfCards.length; i++) {
+//     if (listOfCards[i].star) {
 
-function changeFilterButton() {
-  filterButton.innerText = 'Show All Ideas';
-}
+//       starredIdeas.push(listOfCards[i])
+//     }
 
-function matchToCard() {
+//     renderIdeaCard(starredIdeas)
+//   }
+//   switchCardsShown();
+// }
+
+// function switchCardsShown() {
+//   if (filterButton.innerText === 'Show Filtered Ideas') {
+//     filterButton.innerText = 'Show All Ideas';
+//     renderIdeaCard(starredIdeas);
+//   } else {
+//     filterButton.innerText = 'Show Filtered Ideas';
+//     renderIdeaCard(listOfCards)
+//   }
+// }
+
+// function matchToCard() {
   
-}
+// }
 
-function searchTitle() {
+// function searchTitle() {
 
-}
+// }
 
-function searchBody() {
+// function searchBody() {
 
-}
+// }
