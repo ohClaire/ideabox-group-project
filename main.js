@@ -1,36 +1,52 @@
-// query selector below
-const titleInput = document.querySelector("#title-box");
-const bodyInput = document.querySelector("#body-box");
-// commentInput = document.querySelector('.card-comments');
-const saveButton = document.querySelector(".user-form--button");
-const ideaCardsArea = document.querySelector(".idea-cards--area");
-const ideaCard = document.querySelector(".idea-card");
-const filterButton = document.querySelector(".starred-ideas--button")
-const searchBar = document.querySelector('.user-form--searchbar')
-
-//global variables
 const listOfCards = [];
 const starredIdeas = [];
 
-//event listeners below
-saveButton.addEventListener("click", saveUserInfo);
-window.addEventListener("load", createExampleIdeaCard);
-titleInput.addEventListener("input", handleChange);
+const bodyInput = document.querySelector("#body-box");
+const filterButton = document.querySelector(".starred-ideas--button")
+const ideaCard = document.querySelector(".idea-card");
+const ideaCardsArea = document.querySelector(".idea-cards--area");
+const saveButton = document.querySelector(".user-form--button");
+const searchBar = document.querySelector('.user-form--searchbar')
+const titleInput = document.querySelector("#title-box");
+
+
+
 bodyInput.addEventListener("input", handleChange);
-saveButton.addEventListener("load", disableButton);
-// disable show starred button on load
+filterButton.addEventListener("click", showStarredCards)
 ideaCardsArea.addEventListener("click", chooseIcon);
-// filterButton.addEventListener("click", showStarredCards)
-// searchBar.addEventListener("input", matchToCard)
+saveButton.addEventListener("click", saveUserInfo);
+searchBar.addEventListener("input", matchToCard)
+titleInput.addEventListener("input", handleChange);
 window.addEventListener("load", loopThru)
+window.addEventListener("load", createExampleIdeaCard);
+
 function createExampleIdeaCard() {
   var exampleCard = new Idea("Example Idea", "I think big thoughts!");
+
   listOfCards.unshift(exampleCard);
   renderIdeaCard(listOfCards);
 }
 
 function createCard() {
   const ideaCard = new Idea(titleInput.value, bodyInput.value);
+
+  renderIdeaCard(listOfCards);
+}
+
+function changeStarImageSrc(ideaCard) {
+  if (ideaCard.star) {
+    return "./assets/star-active.svg";
+  } else {
+    return "./assets/star.svg";
+  }
+}
+
+function renderIdeaCard(mainList) {
+  ideaCardsArea.innerHTML = "";
+
+  for (let i = 0; i < mainList.length; i++) {
+    var starImgSrc = changeStarImageSrc(mainList[i]);
+>>>>>>> main
 
   return ideaCard;
 }
@@ -53,6 +69,7 @@ function renderIdeaCard(mainList) {
     var starImageSrc = changeStarImageSrc(mainList[i]);
     ideaCardsArea.innerHTML += `
       <section class="idea-card">
+<<<<<<< HEAD
         <div class="card-header">
           <img data-name="star-icon" id="${mainList[i].id}" class="star-icon" src="${starImageSrc}" alt="star-icon">
           <img data-name="delete-button" id="${mainList[i].id}" class="delete-icon" src="./assets/delete.svg"
@@ -66,8 +83,29 @@ function renderIdeaCard(mainList) {
           <img class="plus-icon" src="./assets/comment.svg" alt="plus-icon">
           <div>comment</div>
         </div>
+=======
+        <article class="card-header">
+          <img data-name="star-icon" id="${mainList[i].id}" class="star-icon icon" src="${starImgSrc}" alt="star-icon">
+          <img data-name="delete-button" id="${mainList[i].id}" class="delete-icon icon" src="./assets/delete.svg"
+            alt="delete-icon">
+        </article>
+        <article class="card-body">
+          <p class="idea-title">${mainList[i].title}</p>
+          <p class="idea-body">${mainList[i].body}</p>
+        </article>
+        <article class="card-comments">
+          <img class="plus-icon icon" src="./assets/comment.svg" alt="plus-icon">
+          <p>Comment</p>
+        </article>
+>>>>>>> main
       </section>`;
   }
+}
+
+function createCard() {
+  const ideaCard = new Idea(titleInput.value, bodyInput.value);
+
+  return ideaCard;
 }
 
 function saveUserInfo(event) {
@@ -77,8 +115,15 @@ function saveUserInfo(event) {
   if (titleInput.value && bodyInput.value) {
     listOfCards.unshift(createCard());
     renderIdeaCard(listOfCards);
+
+  if (titleInput.value && bodyInput.value) {
+    listOfCards.unshift(createCard());
+
+    renderIdeaCard(listOfCards);
+
     document.forms[0].reset();
   }
+
   disableButton();
 }
 
@@ -98,15 +143,41 @@ function handleChange() {
   }
 }
 
+function chooseIcon(event) {
+  var ideaCardID = convertString(event.target.id);
+ 
+  if (event.target.dataset.name === "delete-button") {
+    deleteCard(ideaCardID);
+  }
+  
+  if (event.target.dataset.name === "star-icon") {
+    favoriteCard(ideaCardID);
+  }
+}
+
+function convertString(string) {
+  return parseInt(string);
+}
+
 function deleteCard(ideaCardID) {
+
   var ideaCardID = parseInt(ideaCardID);
   for (let i = 0; i < listOfCards.length; i++) {
     if (ideaCardID === listOfCards[i].id) {
       listOfCards.splice(i, 1);
+
+
+  for (let i = 0; i < listOfCards.length; i++) {
+
+    if (ideaCardID === listOfCards[i].id) {
+      listOfCards.splice(i, 1);
+
+
       renderIdeaCard(listOfCards);
     }
   }
 }
+
 
 function chooseIcon(event) {
   if (event.target.dataset.name === "delete-button") {
@@ -122,10 +193,19 @@ function favoriteCard(ideaCardID) {
   var ideaCardID = parseInt(ideaCardID);
   var starStatus = false;
 
+function favoriteCard(ideaCardID) {
+
+
   for (let i = 0; i < listOfCards.length; i++) {
-    
+
     if (ideaCardID === listOfCards[i].id) {
+
       listOfCards[i].star = !listOfCards[i].star;  
+
+      listOfCards[i].star = !listOfCards[i].star;
+
+      renderIdeaCard(listOfCards);
+
     }
 
     renderIdeaCard(listOfCards);

@@ -2,9 +2,8 @@
 <html lang="en">
 
 <head>
-  <!-- <meta charset="UTF-8"> -->
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
   <title>IdeaBox</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,300" rel="stylesheet" type="text/css">
@@ -13,41 +12,41 @@
 
 <body>
   <div class="page">
-    <div class="navbar">
+    <aside class="navbar">
       <h1 class="title">IdeaBox</h1>
       <hr class="divider">
-      <div class="filter-starred">
+      <section class="filter-starred">
         <p>Filter Starred Ideas</p>
         <span class="center-button">
           <button class="starred-ideas--button">Show Starred Ideas</button>
         </span>
-      </div>
+      </section>
       <hr class="divider">
-    </div>
-    <div class="right-side">
-      <div class="user-form--section">
+    </aside>
+    <main class="right-side">
+      <section class="user-form--section">
         <div class="hold-form-and-bar">
           <form class="user-form--inputs">
             <label for="title">Title</label>
-            <input class="input-box" type="text" id="title-box" name="title">
+            <input maxlength="30" class="input-box" type="text" id="title-box" name="title">
             <br>
             <label for="body">Body</label>
-            <textarea class="input-box body" type="text" id="body-box" name="body"></textarea>
+            <textarea maxlength="30" class="input-box body" type="text" id="body-box" name="body"></textarea>
             <br>
             <button class="user-form--button" disabled>Save</button>
           </form>
           <br>
-          <div class="user-form--searchbox">
+          <article class="user-form--searchbox">
             <div class="box-search-icon">
               <img class="search-icon" src="./assets/search.svg" alt="search-icon">
             </div>
             <input class="user-form--searchbar" type="text" placeholder="Search ideas"></input>
-          </div>
+          </article>
         </div>
-      </div>
-      <div class="idea-cards--area">
-      </div>
-    </div>
+      </section>
+      <section class="idea-cards--area">
+      </section>
+    </main>
   </div>
   <script src="Idea.js"></script>
   <script src="main.js"></script>
