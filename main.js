@@ -6,29 +6,13 @@ const filterButton = document.querySelector(".starred-ideas--button");
 const ideaCard = document.querySelector(".idea-card");
 const ideaCardsArea = document.querySelector(".idea-cards--area");
 const saveButton = document.querySelector(".user-form--button");
-const searchBar = document.querySelector('.user-form--searchbar')
 const titleInput = document.querySelector("#title-box");
 
 bodyInput.addEventListener("input", handleChange);
 filterButton.addEventListener("click", filterStarredCards);
 ideaCardsArea.addEventListener("click", chooseIcon);
 saveButton.addEventListener("click", saveUserInfo);
-searchBar.addEventListener("input", searchForCard);
 titleInput.addEventListener("input", handleChange);
-window.addEventListener('load', renderOnLoad)
-
-const idea1 = new Idea('Title 1', 'body')
-idea1.star = true
-
-const idea2 = new Idea('Title 2', 'body')
-
-function renderOnLoad() {
-  listOfCards.push(idea1);
-  listOfCards.push(idea2);
-
-  renderIdeaCard(listOfCards);
-}
-
 
 function changeStarImageSrc(ideaCard) {
   if (ideaCard.star) {
@@ -57,7 +41,7 @@ function renderIdeaCard(listOfCards) {
 
   for (let i = 0; i < listOfCards.length; i++) {
     const starImgSrc = changeStarImageSrc(listOfCards[i]);
-    let ideaCardClass = "idea-card column"
+    let ideaCardClass = "idea-card column";
 
     let shouldRender = checkToRender(listOfCards[i]);
 
@@ -79,11 +63,10 @@ function renderIdeaCard(listOfCards) {
           </article>
         </section>`;
     }
-    
   }
 }
 
-function createCard() { // rename this to renderNewCard?
+function renderNewCard() { 
   const ideaCard = new Idea(titleInput.value, bodyInput.value);
 
   return ideaCard;
@@ -93,7 +76,7 @@ function saveUserInfo(event) {
   event.preventDefault();
   
   if (titleInput.value && bodyInput.value) {
-    listOfCards.unshift(createCard());
+    listOfCards.unshift(renderNewCard());
 
     renderIdeaCard(listOfCards);
 
@@ -173,6 +156,3 @@ function renderFilterButton() {
   }
 }
 
-function searchForCard() {
-  
-}
