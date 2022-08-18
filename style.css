@@ -1,5 +1,5 @@
 .page {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   display: flex;
   flex-direction: row;
   font-family: Open Sans;
@@ -9,8 +9,6 @@
   align-items: stretch;
   background-color: #1f1f3d;
   color: white;
-  display: flex;
-  flex-direction: column;
   justify-content: flex-start;
   padding: 5px 10px;
 }
@@ -21,8 +19,6 @@
 
 .filter-starred {
   color: #bfbfdd;
-  display: flex;
-  flex-direction: column;
   justify-content: flex-start;
   font-size: small;
   font-weight: bolder;
@@ -63,8 +59,6 @@ hr.divider {
 }
 
 .right-side {
-  display: flex;
-  flex-direction: column;
   flex-grow: 1;
 }
 
@@ -87,11 +81,6 @@ hr.divider {
   font-size: 12px;
   font-weight: bolder;
   padding: 4px
-}
-
-.user-form--inputs {
-  display: flex;
-  flex-direction: column;
 }
 
 .input-box {
@@ -151,6 +140,7 @@ hr.divider {
   font-weight: lighter;
   height: 22px;
   padding-left: 6px;
+  overflow: hidden;
 }
 
 .idea-title {
@@ -168,8 +158,6 @@ hr.divider {
 
 .idea-card {
   border: 1px solid #2b2b57c7;
-  display: flex;
-  flex-direction: column;
   margin: 10px;
   padding: 5px;
   width: 150px;
@@ -192,7 +180,8 @@ hr.divider {
 
 .card-body {
   height: 150px;
-  word-wrap: break-word;
+  overflow-wrap: break-word;
+  overflow: auto;
 }
 
 .card-comments {
@@ -213,4 +202,9 @@ hr.divider {
 .plus-icon {
   display: flex;
   justify-content: flex-start;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
 }

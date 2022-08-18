@@ -12,10 +12,10 @@
 
 <body>
   <div class="page">
-    <aside class="navbar">
+    <aside class="navbar column">
       <h1 class="title">IdeaBox</h1>
       <hr class="divider">
-      <section class="filter-starred">
+      <section class="filter-starred column">
         <p>Filter Starred Ideas</p>
         <span class="center-button">
           <button class="starred-ideas--button">Show Starred Ideas</button>
@@ -23,15 +23,15 @@
       </section>
       <hr class="divider">
     </aside>
-    <main class="right-side">
+    <main class="right-side column">
       <section class="user-form--section">
         <div class="hold-form-and-bar">
-          <form class="user-form--inputs">
+          <form class="user-form--inputs column">
             <label for="title">Title</label>
-            <input maxlength="30" class="input-box" type="text" id="title-box" name="title">
+            <input class="input-box" type="text" id="title-box" name="title">
             <br>
             <label for="body">Body</label>
-            <textarea maxlength="30" class="input-box body" type="text" id="body-box" name="body"></textarea>
+            <textarea class="input-box body" type="text" id="body-box" name="body"></textarea>
             <br>
             <button class="user-form--button" disabled>Save</button>
           </form>

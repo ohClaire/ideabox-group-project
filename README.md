@@ -6,16 +6,20 @@
   - [Technologies](#technologies)
   - [Features](#features)
   - [Page Demo](#page-demo)
+  - [Workflow](#workflow)
   - [Possible Future Extensions](#possible-future-extensions)
   - [Set Up](#set-up)
   - [Contributors](#contributors)
   - [Sources](#sources)
   - [Project Specs](#project-specs)
+  - [Post-Submission Work](#post-submission-work)
 
 ## Introduction
-  Users are welcome to visit IdeaBox to store any ideas that passes their mind. This application allows our users to create a card with a title and description of their idea to be displayed on the page. From here, they can choose to delete a card or favorite it. Favorite cards are saved and remain on the page for users to review as they wish.
+  Users are welcome to visit IdeaBox to store any ideas that passes their mind. This application allows our users to create a card with a title and a body with the description of their idea. The card will appear in the white area of the page. From here, they can choose to delete a card or favorite it. Favorite cards are saved and remain on the page for users to review as they wish.
 
   This project was assigned as a part of Turing School of Software and Design's Front-End program, students had one week to complete it.
+
+  *Changes were added to this project during an intermission break between Module 1 and Module 2 of Turing. Changes were based on instructor feedback recommendations.*
 
 ## Deployed Page
 [Visit our IdeaBox website here!](https://ohclaire.github.io/ideabox-group-project/)
@@ -38,6 +42,8 @@
 ## Page Demo
 ![Example of button functionality](https://media.giphy.com/media/rxkhdjpUekW9SHgyL5/giphy.gif)
 
+## Workflow
+- This project was completed by mob coding. The number commits is not a clear representation of the work that each member contributed because everyone actively participated in writing each line of code. We did research throughout the project sessions while brainstorming solutions. This team worked well together, considered each member's ideas, and took initiative asking for help from mentors and cohortmates. 
 
 ## Possible Future Extensions
 - Allow users to add a comment to their idea cards.
@@ -65,3 +71,7 @@
 
 ## Project Specs
 - The spec for this project can be found [here](https://frontend.turing.edu/projects/module-1/ideabox-group-v2.html).
+
+## Post-Submission Work
+- Filter and display starred cards when the "Show Starred Ideas" button is clicked
+- Render button change when toggling between showing starred cards and all cards.
