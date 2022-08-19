@@ -6,12 +6,15 @@ const filterButton = document.querySelector(".starred-ideas--button");
 const ideaCard = document.querySelector(".idea-card");
 const ideaCardsArea = document.querySelector(".idea-cards--area");
 const saveButton = document.querySelector(".user-form--button");
+const searchInput = document.querySelector(".user-form--searchbar");
+const searchButton = document.querySelector(".box-search-icon");
 const titleInput = document.querySelector("#title-box");
 
 bodyInput.addEventListener("input", handleChange);
 filterButton.addEventListener("click", filterStarredCards);
 ideaCardsArea.addEventListener("click", chooseIcon);
 saveButton.addEventListener("click", saveUserInfo);
+searchButton.addEventListener("click", renderSearchedCards);
 titleInput.addEventListener("input", handleChange);
 
 function changeStarImageSrc(ideaCard) {
@@ -35,6 +38,7 @@ function checkToRender(listOfCardsIndex) {
 
   return shouldRender;
 }
+
 
 function renderIdeaCard(listOfCards) {
   ideaCardsArea.innerHTML = "";
@@ -156,3 +160,10 @@ function renderFilterButton() {
   }
 }
 
+function renderSearchedCards() {
+  const searchText = searchInput.value;
+
+  const filterSearch = listOfCards.filter(card => card.title.includes(searchText) || card.body.includes(searchText));
+
+  renderIdeaCard(filterSearch);
+}
